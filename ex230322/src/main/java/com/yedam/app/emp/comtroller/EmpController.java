@@ -14,7 +14,7 @@ public class EmpController {
 	EmpService empService;
 	
 	@RequestMapping("/getEmpInfo")
-	@ResponseBody
+	@ResponseBody// Return되는 대상을 Body에 출력함
 	public EmpVO getEmpInfo(EmpVO empVO) {
 		return empService.getEmpInfo(empVO);
 	}
