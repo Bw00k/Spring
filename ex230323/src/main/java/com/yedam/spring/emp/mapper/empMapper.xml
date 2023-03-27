@@ -41,8 +41,8 @@
  	</select>
  	
  	<!--  등록  -->
- 	<insert id="insertEmpInfo" parameterType="EmpVO">
- 		<selectKey keyProperty="employeeId" resultType="int" order="BEFORE">
+ 	<insert id="insertBoard" parameterType="BoardVO">
+ 		<selectKey keyProperty="bno" resultType="int" order="BEFORE">
  			SELECT NVL(MAX(employee_id),0) + 1 FROM employees
  		</selectKey>
  		INSERT INTO employees (employee_id, first_name, last_name, email, hire_date, job_id, salary)
