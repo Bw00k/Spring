@@ -28,23 +28,42 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public BoardVO getBoardNO() {
-	return null;
+	return boardMapper.getBoardNO();
 		
 	}
 
 	@Override
 	public int insertBoardInfo(BoardVO boardVO) {
-		return 0;
+		int result = boardMapper.insertBoard(boardVO);
+
+		if (result == 1) {
+			return boardVO.getBno();
+		} else {
+			return 0;
+		}
 	}
 
 	@Override
 	public int updateBoardInfo(BoardVO boardVO) {
-		return 0;
+		int result = boardMapper.updateBoard(boardVO);
+
+		if (result == 1) {
+			return boardVO.getBno();
+		} else {
+			return 0;
+		}
 	}
 
 	@Override
 	public int deleteBoardInfo(int boardNo) {
-		return 0;
+		int result = boardMapper.deleteBoard(boardNo);
+
+		if (result == 1) {
+			return boardNo;
+		} else {
+			return 0;
+		}
+		
 	}
 	
 }

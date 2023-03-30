@@ -2,20 +2,19 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="com.yedam.spring.board.mapper.BoardMapperr">
+ <mapper namespace="com.yedam.spring.board.mapper.BoardMapper">
  	<!--  전체조회 -->
  	<select id="selectBoardList" resultType="BoardVO">
- 		SELECT bno,
- 			   title,
- 			   contents,
- 			   writer,
- 			   regdate,
- 			   updatedate,
- 			   image
- 			   
- 		FROM board
- 		ORDER BY bno
- 	</select>
+		SELECT bno,
+			   title,
+			   contents,
+			   writer,
+			   regdate,
+			   updatedate,
+			   image
+	    FROM board
+	    ORDER BY bno
+	</select>
  	
  	<!--  단건조회 : 조건 1) 글번호 2) 작가 -->
  	<select id ="selectBoardInfo" resultType="BoardVO">
@@ -49,31 +48,32 @@
  	
  	
  	<!--  등록 : 필수와 선택 구분 -->
- 	<insert id="insertEmpInfo" parameterType="EmpVO">
+ 	<insert id="insertBoard" parameterType="BoardVO">
  		
- 		INSERT INTO board (bno
- 							,  title
- 							, contents
- 							, writer
- 							<if test="regdate != null">
- 							, regdate
- 							</if>
- 							<if test="image != null and !image.eqals('')">
- 							, image
- 							</if>
- 							)
- 							
- 					   VALUES (#{bno}
- 					   		, #{title}
- 					   		, #{contents}
- 					   		, #{writer}
- 					   		<if test="regdate != null">
- 					   		, #{regdate}
- 					   		</if>
- 					   		<if test="image != null and !image.eqals('')">
- 					   		, #{image}
- 					   		</if>
- 					   		)
+ 		INSERT INTO board (
+							bno
+							, title
+							, contents
+							, writer
+							<if test="regdate != null">
+							, regdate
+							</if>
+							<if test="image != null and !image.equals('')">
+							, image
+							</if>
+							)
+					VALUES (
+							#{bno}
+							, #{title}
+							, #{contents}
+							, #{writer}
+							<if test="regdate != null">
+							, #{regdate}
+							</if>
+							<if test="image != null and !image.equals('')">
+							, #{image}
+							</if>
+							)
  	
  	</insert>
  	

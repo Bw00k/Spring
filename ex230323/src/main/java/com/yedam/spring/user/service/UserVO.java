@@ -16,5 +16,5 @@ public class UserVO {
 	private Date today;
 	
 	
-	private MultipartFile pic;
+	private MultipartFile[] pic;
 }
